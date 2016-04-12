@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5b14853490e04bcea53ac0fe93e59a68" Name="Diagram1" >
+        <EntityTypeShape EntityType="FunEntities.TrainingTermFeature" Width="3.125" PointX="16.125" PointY="7.875" />
+        <EntityTypeShape EntityType="FunEntities.TrainingTerm" Width="3.125" PointX="16.125" PointY="5" />
+        <EntityTypeShape EntityType="FunEntities.TrainingKnowledgeCategory" Width="3.25" PointX="8.375" PointY="0.875" />
+        <EntityTypeShape EntityType="FunEntities.TrainingKnowlogeKeyWord" Width="3" PointX="12.375" PointY="5" />
+        <AssociationConnector Association="FunEntities.TrainingTermFeatureTrainingTerm" />
+        <EntityTypeShape EntityType="FunEntities.ContextGrammer" Width="3.125" PointX="16.125" PointY="0.75" />
+        <EntityTypeShape EntityType="FunEntities.ContextTerm" Width="3.375" PointX="21.875" PointY="3.875" />
+        <EntityTypeShape EntityType="FunEntities.KnowledgeContext" Width="3.25" PointX="8.25" PointY="8.125" />
+        <EntityTypeShape EntityType="FunEntities.TrainingKnowledge" Width="3.25" PointX="8.25" PointY="5" />
+        <AssociationConnector Association="FunEntities.TrainingKnowledgeTrainingKnowledgeCategory" />
+        <AssociationConnector Association="FunEntities.KnowledgeContextTrainingKnowledge" />
+        <AssociationConnector Association="FunEntities.TrainingKnowlogeTermTrainingTerm" />
+        <AssociationConnector Association="FunEntities.TrainingKnowlogeTermTrainingKnowledge" />
+        <EntityTypeShape EntityType="FunEntities.TrainingTermFetaurePosition" Width="3.125" PointX="16.125" PointY="10.75" />
+        <AssociationConnector Association="FunEntities.TrainingTermFetaurePositionTrainingTermFeature" />
+        <EntityTypeShape EntityType="FunEntities.LanguageCulture" Width="3.125" PointX="16.125" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="FunEntities.LanguageCultureTrainingTerm" />
+        <EntityTypeShape EntityType="FunEntities.ContextGrammerRole" Width="2.5" PointX="20.5" PointY="0.75" />
+        <AssociationConnector Association="FunEntities.ContextGrammerContextGrammerRole" />
+        <EntityTypeShape EntityType="FunEntities.ContextTermType" Width="3.375" PointX="21.875" PointY="6.875" />
+        <AssociationConnector Association="FunEntities.ContextTermContextTermType" />
+        <AssociationConnector Association="FunEntities.ContextGrammerRoleContextTerm" />
+        <EntityTypeShape EntityType="FunEntities.ContextGrammerExpression" Width="2.375" PointX="24" PointY="0.75" />
+        <AssociationConnector Association="FunEntities.ContextGrammerExpressionContextGrammerRole" />
+        <AssociationConnector Association="FunEntities.ContextGrammerExpressionContextTerm" />
+        <AssociationConnector Association="FunEntities.ContextGrammerTrainingKnowledgeCategory" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

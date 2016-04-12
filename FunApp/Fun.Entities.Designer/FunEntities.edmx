@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FunEntities.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="FunEntitiesStoreContainer">
+    <EntitySet Name="TrainingTermFeatures" EntityType="FunEntities.Store.TrainingTermFeatures" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TrainingTerms" EntityType="FunEntities.Store.TrainingTerms" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TrainingTermCategories" EntityType="FunEntities.Store.TrainingTermCategories" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TrainingKnowlogies" EntityType="FunEntities.Store.TrainingKnowlogies" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="TrainingKnowlogyTrainingTerm" Association="FunEntities.Store.TrainingKnowlogyTrainingTerm">
+      <End Role="TrainingKnowlogy" EntitySet="TrainingKnowlogies" />
+      <End Role="TrainingTerm" EntitySet="TrainingTerms" />
+    </AssociationSet>
+    <AssociationSet Name="TrainingKnowlogyTrainingTermCategory" Association="FunEntities.Store.TrainingKnowlogyTrainingTermCategory">
+      <End Role="TrainingKnowlogy" EntitySet="TrainingKnowlogies" />
+      <End Role="TrainingTermCategory" EntitySet="TrainingTermCategories" />
+    </AssociationSet>
+    <AssociationSet Name="TrainingTermFeatureTrainingTerm" Association="FunEntities.Store.TrainingTermFeatureTrainingTerm">
+      <End Role="TrainingTermFeature" EntitySet="TrainingTermFeatures" />
+      <End Role="TrainingTerm" EntitySet="TrainingTerms" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TrainingTermFeatures">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Letter" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Count" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsFirstLetter" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TrainingTermId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TrainingTerms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Word" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Length" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TrainingTermCategories">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TrainingKnowlogies">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Order" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TrainingTermId" Type="int" Nullable="false" />
+    <Property Name="TrainingTermCategoryId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="TrainingKnowlogyTrainingTerm">
+    <End Role="TrainingKnowlogy" Type="FunEntities.Store.TrainingKnowlogies" Multiplicity="*" />
+    <End Role="TrainingTerm" Type="FunEntities.Store.TrainingTerms" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TrainingTerm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrainingKnowlogy">
+        <PropertyRef Name="TrainingTermId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TrainingKnowlogyTrainingTermCategory">
+    <End Role="TrainingKnowlogy" Type="FunEntities.Store.TrainingKnowlogies" Multiplicity="*" />
+    <End Role="TrainingTermCategory" Type="FunEntities.Store.TrainingTermCategories" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TrainingTermCategory">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrainingKnowlogy">
+        <PropertyRef Name="TrainingTermCategoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TrainingTermFeatureTrainingTerm">
+    <End Role="TrainingTermFeature" Type="FunEntities.Store.TrainingTermFeatures" Multiplicity="*" />
+    <End Role="TrainingTerm" Type="FunEntities.Store.TrainingTerms" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TrainingTerm">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TrainingTermFeature">
+        <PropertyRef Name="TrainingTermId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="FunEntities" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="FunEntitiesContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TrainingTermFeatures" EntityType="FunEntities.TrainingTermFeature" />
+          <EntitySet Name="TrainingTerms" EntityType="FunEntities.TrainingTerm" />
+          <EntitySet Name="TrainingKnowledgeCategories" EntityType="FunEntities.TrainingKnowledgeCategory" />
+          <EntitySet Name="TrainingKnowlogeKeyWords" EntityType="FunEntities.TrainingKnowlogeKeyWord" />
+          <AssociationSet Name="TrainingTermFeatureTrainingTerm" Association="FunEntities.TrainingTermFeatureTrainingTerm">
+            <End Role="TrainingTermFeature" EntitySet="TrainingTermFeatures" />
+            <End Role="TrainingTerm" EntitySet="TrainingTerms" />
+          </AssociationSet>
+          <EntitySet Name="ContextGrammers" EntityType="FunEntities.ContextGrammer" />
+          <EntitySet Name="ContextTerms" EntityType="FunEntities.ContextTerm" />
+          <EntitySet Name="KnowledgeContexts" EntityType="FunEntities.KnowledgeContext" />
+          <EntitySet Name="TrainingKnowledges" EntityType="FunEntities.TrainingKnowledge" />
+          <AssociationSet Name="TrainingKnowledgeTrainingKnowledgeCategory" Association="FunEntities.TrainingKnowledgeTrainingKnowledgeCategory">
+            <End Role="TrainingKnowledge" EntitySet="TrainingKnowledges" />
+            <End Role="TrainingKnowledgeCategory" EntitySet="TrainingKnowledgeCategories" />
+          </AssociationSet>
+          <AssociationSet Name="KnowledgeContextTrainingKnowledge" Association="FunEntities.KnowledgeContextTrainingKnowledge">
+            <End Role="KnowledgeContext" EntitySet="KnowledgeContexts" />
+            <End Role="TrainingKnowledge" EntitySet="TrainingKnowledges" />
+          </AssociationSet>
+          <AssociationSet Name="TrainingKnowlogeTermTrainingTerm" Association="FunEntities.TrainingKnowlogeTermTrainingTerm">
+            <End Role="TrainingKnowlogeTerm" EntitySet="TrainingKnowlogeKeyWords" />
+            <End Role="TrainingTerm" EntitySet="TrainingTerms" />
+          </AssociationSet>
+          <AssociationSet Name="TrainingKnowlogeTermTrainingKnowledge" Association="FunEntities.TrainingKnowlogeTermTrainingKnowledge">
+            <End Role="TrainingKnowlogeTerm" EntitySet="TrainingKnowlogeKeyWords" />
+            <End Role="TrainingKnowledge" EntitySet="TrainingKnowledges" />
+          </AssociationSet>
+          <EntitySet Name="TrainingTermFetaurePositions" EntityType="FunEntities.TrainingTermFetaurePosition" />
+          <AssociationSet Name="TrainingTermFetaurePositionTrainingTermFeature" Association="FunEntities.TrainingTermFetaurePositionTrainingTermFeature">
+            <End Role="TrainingTermFetaurePosition" EntitySet="TrainingTermFetaurePositions" />
+            <End Role="TrainingTermFeature" EntitySet="TrainingTermFeatures" />
+          </AssociationSet>
+          <EntitySet Name="LanguageCultures" EntityType="FunEntities.LanguageCulture" />
+          <AssociationSet Name="LanguageCultureTrainingTerm" Association="FunEntities.LanguageCultureTrainingTerm">
+            <End Role="LanguageCulture" EntitySet="LanguageCultures" />
+            <End Role="TrainingTerm" EntitySet="TrainingTerms" />
+          </AssociationSet>
+          <EntitySet Name="ContextGrammerRoles" EntityType="FunEntities.ContextGrammerRole" />
+          <AssociationSet Name="ContextGrammerContextGrammerRole" Association="FunEntities.ContextGrammerContextGrammerRole">
+            <End Role="ContextGrammer" EntitySet="ContextGrammers" />
+            <End Role="ContextGrammerRole" EntitySet="ContextGrammerRoles" />
+          </AssociationSet>
+          <EntitySet Name="ContextTermTypes" EntityType="FunEntities.ContextTermType" />
+          <AssociationSet Name="ContextTermContextTermType" Association="FunEntities.ContextTermContextTermType">
+            <End Role="ContextTerm" EntitySet="ContextTerms" />
+            <End Role="ContextTermType" EntitySet="ContextTermTypes" />
+          </AssociationSet>
+          <AssociationSet Name="ContextGrammerRoleContextTerm" Association="FunEntities.ContextGrammerRoleContextTerm">
+            <End Role="ContextGrammerRole" EntitySet="ContextGrammerRoles" />
+            <End Role="ContextTerm" EntitySet="ContextTerms" />
+          </AssociationSet>
+          <EntitySet Name="ContextGrammerExpressions" EntityType="FunEntities.ContextGrammerExpression" />
+          <AssociationSet Name="ContextGrammerExpressionContextGrammerRole" Association="FunEntities.ContextGrammerExpressionContextGrammerRole">
+            <End Role="ContextGrammerExpression" EntitySet="ContextGrammerExpressions" />
+            <End Role="ContextGrammerRole" EntitySet="ContextGrammerRoles" />
+          </AssociationSet>
+          <AssociationSet Name="ContextGrammerExpressionContextTerm" Association="FunEntities.ContextGrammerExpressionContextTerm">
+            <End Role="ContextGrammerExpression" EntitySet="ContextGrammerExpressions" />
+            <End Role="ContextTerm" EntitySet="ContextTerms" />
+          </AssociationSet>
+          <AssociationSet Name="ContextGrammerTrainingKnowledgeCategory" Association="FunEntities.ContextGrammerTrainingKnowledgeCategory">
+            <End Role="ContextGrammer" EntitySet="ContextGrammers" />
+            <End Role="TrainingKnowledgeCategory" EntitySet="TrainingKnowledgeCategories" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TrainingTermFeature">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Letter" Type="String" Nullable="false" />
+          <Property Name="TotalNumberOfThisLetter" Type="String" Nullable="false" />
+          <NavigationProperty Name="TrainingTerm" Relationship="FunEntities.TrainingTermFeatureTrainingTerm" FromRole="TrainingTermFeature" ToRole="TrainingTerm" />
+          <Property Name="TrainingTermId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TrainingTermFetaurePositions" Relationship="FunEntities.TrainingTermFetaurePositionTrainingTermFeature" FromRole="TrainingTermFeature" ToRole="TrainingTermFetaurePosition" />
+        </EntityType>
+        <EntityType Name="TrainingTerm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Term" Type="String" Nullable="false" />
+          <NavigationProperty Name="TrainingTermFeatures" Relationship="FunEntities.TrainingTermFeatureTrainingTerm" FromRole="TrainingTerm" ToRole="TrainingTermFeature" />
+          <NavigationProperty Name="TrainingKnowlogeTerms" Relationship="FunEntities.TrainingKnowlogeTermTrainingTerm" FromRole="TrainingTerm" ToRole="TrainingKnowlogeTerm" />
+          <NavigationProperty Name="LanguageCulture" Relationship="FunEntities.LanguageCultureTrainingTerm" FromRole="TrainingTerm" ToRole="LanguageCulture" />
+          <Property Name="LanguageCultureId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingKnowledgeCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" />
+          <NavigationProperty Name="TrainingKnowledges" Relationship="FunEntities.TrainingKnowledgeTrainingKnowledgeCategory" FromRole="TrainingKnowledgeCategory" ToRole="TrainingKnowledge" />
+          <NavigationProperty Name="ContextGrammers" Relationship="FunEntities.ContextGrammerTrainingKnowledgeCategory" FromRole="TrainingKnowledgeCategory" ToRole="ContextGrammer" />
+        </EntityType>
+        <EntityType Name="TrainingKnowlogeKeyWord">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order" Type="String" Nullable="false" />
+          <NavigationProperty Name="TrainingTerm" Relationship="FunEntities.TrainingKnowlogeTermTrainingTerm" FromRole="TrainingKnowlogeTerm" ToRole="TrainingTerm" />
+          <Property Name="TrainingTermId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TrainingKnowledge" Relationship="FunEntities.TrainingKnowlogeTermTrainingKnowledge" FromRole="TrainingKnowlogeTerm" ToRole="TrainingKnowledge" />
+          <Property Name="TrainingKnowledgeId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="TrainingTermFeatureTrainingTerm">
+          <End Type="FunEntities.TrainingTermFeature" Role="TrainingTermFeature" Multiplicity="*" />
+          <End Type="FunEntities.TrainingTerm" Role="TrainingTerm" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingTermFeature">
+              <PropertyRef Name="TrainingTermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContextGrammer">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ContextGrammerRoles" Relationship="FunEntities.ContextGrammerContextGrammerRole" FromRole="ContextGrammer" ToRole="ContextGrammerRole" />
+          <NavigationProperty Name="TrainingKnowledgeCategory" Relationship="FunEntities.ContextGrammerTrainingKnowledgeCategory" FromRole="ContextGrammer" ToRole="TrainingKnowledgeCategory" />
+          <Property Name="TrainingKnowledgeCategoryId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContextTerm">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ContextTermType" Relationship="FunEntities.ContextTermContextTermType" FromRole="ContextTerm" ToRole="ContextTermType" />
+          <Property Name="ContextTermTypeId" Type="Int32" Nullable="false" />
+          <Property Name="TrainingTermId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContextGrammerExpressions" Relationship="FunEntities.ContextGrammerExpressionContextTerm" FromRole="ContextTerm" ToRole="ContextGrammerExpression" />
+        </EntityType>
+        <EntityType Name="KnowledgeContext">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TrainingKnowledge" Relationship="FunEntities.KnowledgeContextTrainingKnowledge" FromRole="KnowledgeContext" ToRole="TrainingKnowledge" />
+          <Property Name="TrainingKnowledgeId" Type="Int32" Nullable="false" />
+          <Property Name="Context" Type="String" Nullable="false" />
+          <Property Name="MatchUpPercentage" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TrainingKnowledge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TrainingKnowledgeCategory" Relationship="FunEntities.TrainingKnowledgeTrainingKnowledgeCategory" FromRole="TrainingKnowledge" ToRole="TrainingKnowledgeCategory" />
+          <Property Name="TrainingKnowledgeCategoryId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="KnowledgeContexts" Relationship="FunEntities.KnowledgeContextTrainingKnowledge" FromRole="TrainingKnowledge" ToRole="KnowledgeContext" />
+          <NavigationProperty Name="TrainingKnowlogeTerms" Relationship="FunEntities.TrainingKnowlogeTermTrainingKnowledge" FromRole="TrainingKnowledge" ToRole="TrainingKnowlogeTerm" />
+          <Property Name="Description" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="TrainingKnowledgeTrainingKnowledgeCategory">
+          <End Type="FunEntities.TrainingKnowledge" Role="TrainingKnowledge" Multiplicity="*" />
+          <End Type="FunEntities.TrainingKnowledgeCategory" Role="TrainingKnowledgeCategory" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingKnowledgeCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingKnowledge">
+              <PropertyRef Name="TrainingKnowledgeCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="KnowledgeContextTrainingKnowledge">
+          <End Type="FunEntities.KnowledgeContext" Role="KnowledgeContext" Multiplicity="*" />
+          <End Type="FunEntities.TrainingKnowledge" Role="TrainingKnowledge" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingKnowledge">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="KnowledgeContext">
+              <PropertyRef Name="TrainingKnowledgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TrainingKnowlogeTermTrainingTerm">
+          <End Type="FunEntities.TrainingKnowlogeKeyWord" Role="TrainingKnowlogeTerm" Multiplicity="*" />
+          <End Type="FunEntities.TrainingTerm" Role="TrainingTerm" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingKnowlogeTerm">
+              <PropertyRef Name="TrainingTermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TrainingKnowlogeTermTrainingKnowledge">
+          <End Type="FunEntities.TrainingKnowlogeKeyWord" Role="TrainingKnowlogeTerm" Multiplicity="*" />
+          <End Type="FunEntities.TrainingKnowledge" Role="TrainingKnowledge" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingKnowledge">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingKnowlogeTerm">
+              <PropertyRef Name="TrainingKnowledgeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TrainingTermFetaurePosition">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="TrainingTermFeature" Relationship="FunEntities.TrainingTermFetaurePositionTrainingTermFeature" FromRole="TrainingTermFetaurePosition" ToRole="TrainingTermFeature" />
+          <Property Name="TrainingTermFeatureId" Type="Int32" Nullable="false" />
+          <Property Name="HasThisLetterInPosition" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="TrainingTermFetaurePositionTrainingTermFeature">
+          <End Type="FunEntities.TrainingTermFetaurePosition" Role="TrainingTermFetaurePosition" Multiplicity="*" />
+          <End Type="FunEntities.TrainingTermFeature" Role="TrainingTermFeature" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingTermFeature">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingTermFetaurePosition">
+              <PropertyRef Name="TrainingTermFeatureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="LanguageCulture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Code" Type="String" Nullable="false" />
+          <NavigationProperty Name="TrainingTerms" Relationship="FunEntities.LanguageCultureTrainingTerm" FromRole="LanguageCulture" ToRole="TrainingTerm" />
+        </EntityType>
+        <Association Name="LanguageCultureTrainingTerm">
+          <End Type="FunEntities.LanguageCulture" Role="LanguageCulture" Multiplicity="1" />
+          <End Type="FunEntities.TrainingTerm" Role="TrainingTerm" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LanguageCulture">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TrainingTerm">
+              <PropertyRef Name="LanguageCultureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContextGrammerRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ContextGrammer" Relationship="FunEntities.ContextGrammerContextGrammerRole" FromRole="ContextGrammerRole" ToRole="ContextGrammer" />
+          <Property Name="ContextGrammerId" Type="Int32" Nullable="false" />
+          <Property Name="Nmber" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LeftContextTerm" Relationship="FunEntities.ContextGrammerRoleContextTerm" FromRole="ContextGrammerRole" ToRole="ContextTerm" />
+          <Property Name="LeftContextTermId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContextGrammerExpressions" Relationship="FunEntities.ContextGrammerExpressionContextGrammerRole" FromRole="ContextGrammerRole" ToRole="ContextGrammerExpression" />
+        </EntityType>
+        <Association Name="ContextGrammerContextGrammerRole">
+          <End Type="FunEntities.ContextGrammer" Role="ContextGrammer" Multiplicity="1" />
+          <End Type="FunEntities.ContextGrammerRole" Role="ContextGrammerRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContextGrammer">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContextGrammerRole">
+              <PropertyRef Name="ContextGrammerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContextTermType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ContextTerms" Relationship="FunEntities.ContextTermContextTermType" FromRole="ContextTermType" ToRole="ContextTerm" />
+          <Property Name="Name" Type="String" Nullable="false" />
+        </EntityType>
+        <Association Name="ContextTermContextTermType">
+          <End Type="FunEntities.ContextTerm" Role="ContextTerm" Multiplicity="*" />
+          <End Type="FunEntities.ContextTermType" Role="ContextTermType" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ContextTermType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContextTerm">
+              <PropertyRef Name="ContextTermTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContextGrammerRoleContextTerm">
+          <End Type="FunEntities.ContextGrammerRole" Role="ContextGrammerRole" Multiplicity="*" />
+          <End Type="FunEntities.ContextTerm" Role="ContextTerm" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ContextTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContextGrammerRole">
+              <PropertyRef Name="LeftContextTermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ContextGrammerExpression">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="ContextGrammerRole" Relationship="FunEntities.ContextGrammerExpressionContextGrammerRole" FromRole="ContextGrammerExpression" ToRole="ContextGrammerRole" />
+          <Property Name="ContextGrammerRoleId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ContextTerm" Relationship="FunEntities.ContextGrammerExpressionContextTerm" FromRole="ContextGrammerExpression" ToRole="ContextTerm" />
+          <Property Name="RightContextTermId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <Association Name="ContextGrammerExpressionContextGrammerRole">
+          <End Type="FunEntities.ContextGrammerExpression" Role="ContextGrammerExpression" Multiplicity="*" />
+          <End Type="FunEntities.ContextGrammerRole" Role="ContextGrammerRole" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ContextGrammerRole">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContextGrammerExpression">
+              <PropertyRef Name="ContextGrammerRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContextGrammerExpressionContextTerm">
+          <End Type="FunEntities.ContextGrammerExpression" Role="ContextGrammerExpression" Multiplicity="*" />
+          <End Type="FunEntities.ContextTerm" Role="ContextTerm" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="ContextTerm">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContextGrammerExpression">
+              <PropertyRef Name="RightContextTermId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ContextGrammerTrainingKnowledgeCategory">
+          <End Type="FunEntities.ContextGrammer" Role="ContextGrammer" Multiplicity="*" />
+          <End Type="FunEntities.TrainingKnowledgeCategory" Role="TrainingKnowledgeCategory" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TrainingKnowledgeCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ContextGrammer">
+              <PropertyRef Name="TrainingKnowledgeCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="FunEntitiesStoreContainer" CdmEntityContainer="FunEntitiesContainer">
+    <EntitySetMapping Name="TrainingTermFeatures">
+      <EntityTypeMapping TypeName="IsTypeOf(FunEntities.TrainingTermFeature)">
+        <MappingFragment StoreEntitySet="TrainingTermFeatures">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Letter" ColumnName="Letter" />
+          <ScalarProperty Name="TotalNumberOfThisLetter" ColumnName="Count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrainingTerms">
+      <EntityTypeMapping TypeName="IsTypeOf(FunEntities.TrainingTerm)">
+        <MappingFragment StoreEntitySet="TrainingTerms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Term" ColumnName="Word" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrainingKnowledgeCategories">
+      <EntityTypeMapping TypeName="IsTypeOf(FunEntities.TrainingKnowledgeCategory)">
+        <MappingFragment StoreEntitySet="TrainingTermCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TrainingKnowlogeKeyWords">
+      <EntityTypeMapping TypeName="IsTypeOf(FunEntities.TrainingKnowlogeKeyWord)">
+        <MappingFragment StoreEntitySet="TrainingKnowlogies">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

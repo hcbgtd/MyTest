@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31010.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FunApp", "FunApp\FunApp.csproj", "{5ABF650E-CCCF-4D50-9616-1DD85580FC39}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fun.DataContext", "Fun.DataContext\Fun.DataContext.csproj", "{CE42A1D0-4260-415D-AC80-AE71F70201C0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fun.Entities.Designer", "Fun.Entities.Designer\Fun.Entities.Designer.csproj", "{A89B8597-53D5-4034-8119-8A06A34D556E}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonClassifierApp", "PythonClassifierApp\PythonClassifierApp.pyproj", "{48F00134-56BA-4F34-8884-5E1C67836ABF}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonClusteringApp", "PythonClusteringApp\PythonClusteringApp.pyproj", "{7DEE1D2B-BB70-4F8E-8DCE-F8BFD601ED88}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "PythonRegressionApp", "PythonRegressionApp\PythonRegressionApp.pyproj", "{746D902C-CB64-4FED-B811-05C86D02E225}"
+EndProject
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "NLTKApp", "NLTKApp\NLTKApp.pyproj", "{84E5B846-5F71-42C7-BC73-70FFCCD183FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5ABF650E-CCCF-4D50-9616-1DD85580FC39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5ABF650E-CCCF-4D50-9616-1DD85580FC39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5ABF650E-CCCF-4D50-9616-1DD85580FC39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5ABF650E-CCCF-4D50-9616-1DD85580FC39}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE42A1D0-4260-415D-AC80-AE71F70201C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE42A1D0-4260-415D-AC80-AE71F70201C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE42A1D0-4260-415D-AC80-AE71F70201C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE42A1D0-4260-415D-AC80-AE71F70201C0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A89B8597-53D5-4034-8119-8A06A34D556E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A89B8597-53D5-4034-8119-8A06A34D556E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A89B8597-53D5-4034-8119-8A06A34D556E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A89B8597-53D5-4034-8119-8A06A34D556E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48F00134-56BA-4F34-8884-5E1C67836ABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48F00134-56BA-4F34-8884-5E1C67836ABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DEE1D2B-BB70-4F8E-8DCE-F8BFD601ED88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DEE1D2B-BB70-4F8E-8DCE-F8BFD601ED88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{746D902C-CB64-4FED-B811-05C86D02E225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{746D902C-CB64-4FED-B811-05C86D02E225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84E5B846-5F71-42C7-BC73-70FFCCD183FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84E5B846-5F71-42C7-BC73-70FFCCD183FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
